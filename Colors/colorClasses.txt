@@ -1,0 +1,96 @@
+class White():
+    def change(self):
+        global FILLED_COLOR_BG
+        global FILLED_COLOR_BORDER
+        FILLED_COLOR_BG = "white"
+        FILLED_COLOR_BORDER = "white"
+
+    def button():
+        white = Button(app, text = "White")
+        white.bind("<Button-1>", White.change)
+        white.pack()
+
+class Black():
+    def change(self):
+        global FILLED_COLOR_BG
+        global FILLED_COLOR_BORDER
+        FILLED_COLOR_BG = "black"
+        FILLED_COLOR_BORDER = "black"
+
+    def button():
+        black = Button(app, text = "Black")
+        black.bind("<Button-1>", Black.change)
+        black.pack()
+
+class Purple():
+    def change(self):
+        global FILLED_COLOR_BG
+        global FILLED_COLOR_BORDER
+        FILLED_COLOR_BG = "purple"
+        FILLED_COLOR_BORDER = "purple"
+
+    def button():
+        purple = Button(app, text = "Purple")
+        purple.bind("<Button-1>", Purple.change)
+        purple.pack()
+
+class Orange():
+    def change(self):
+        global FILLED_COLOR_BG
+        global FILLED_COLOR_BORDER
+        FILLED_COLOR_BG = "orange"
+        FILLED_COLOR_BORDER = "orange"
+
+    def button():
+        orange = Button(app, text = "Orange")
+        orange.bind("<Button-1>", Orange.change)
+        orange.pack()
+
+class Green():
+    def change(self):
+        global FILLED_COLOR_BG
+        global FILLED_COLOR_BORDER
+        FILLED_COLOR_BG = "green"
+        FILLED_COLOR_BORDER = "green"
+
+    def button():
+        green = Button(app, text = "Green")
+        green.bind("<Button-1>", Green.change)
+        green.pack()
+
+class Blue():
+    def change(self):
+        global FILLED_COLOR_BG
+        global FILLED_COLOR_BORDER
+        FILLED_COLOR_BG = "blue"
+        FILLED_COLOR_BORDER = "blue"
+
+    def button():
+        blue = Button(app, text = "Blue")
+        blue.bind("<Button-1>", Blue.change)
+        blue.pack()
+
+class Yellow():
+    def change(self):
+        global FILLED_COLOR_BG
+        global FILLED_COLOR_BORDER
+        FILLED_COLOR_BG = "yellow"
+        FILLED_COLOR_BORDER = "yellow"
+
+    def button():
+        yellow = Button(app, text = "Yellow")
+        yellow.bind("<Button-1>", Yellow.change)
+        yellow.pack()
+
+class Red():
+    def change(self):
+        global FILLED_COLOR_BG
+        global FILLED_COLOR_BORDER
+        FILLED_COLOR_BG = "red"
+        FILLED_COLOR_BORDER = "red"
+
+    def button():
+        red = Button(app, text = "Red")
+        red.bind("<Button-1>", Red.change)
+        red.pack()
+
