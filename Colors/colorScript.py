@@ -11,9 +11,9 @@ def main():
         colorClasses.write("        FILLED_COLOR_BORDER = \"" + color.lower() + "\"\n")
         colorClasses.write("\n")
         colorClasses.write("    def button():\n")
-        colorClasses.write("        " + color.lower() + " = Button(app, text = \"" + color + "\")\n")
+        colorClasses.write("        " + color.lower() + " = Button(buttonFrame, text = \"" + color + "\", width = 7)\n")
         colorClasses.write("        " + color.lower() + ".bind(\"<Button-1>\", " + color + ".change)\n")
-        colorClasses.write("        " + color.lower() + ".pack()")
+        colorClasses.write("        " + color.lower() + ".pack(side = LEFT)")
         colorClasses.write("\n\n")
     
     

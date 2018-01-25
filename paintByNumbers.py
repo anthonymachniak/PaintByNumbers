@@ -22,12 +22,12 @@ class Cell():
             if not self.fill:
                 fill = EMPTY_COLOR_BG
                 outline = EMPTY_COLOR_BORDER
-            xmin = self.abs * self.size
-            xmax = xmin + self.size
-            ymin = self.ord * self.size
-            ymax = ymin + self.size
+        xmin = self.abs * self.size
+        xmax = xmin + self.size
+        ymin = self.ord * self.size
+        ymax = ymin + self.size
 
-            self.master.create_rectangle(xmin, ymin, xmax, ymax, fill = fill, outline = outline)
+        self.master.create_rectangle(xmin, ymin, xmax, ymax, fill = fill, outline = outline)
 
 
 class CellGrid(Canvas):
@@ -36,6 +36,7 @@ class CellGrid(Canvas):
 
         self.cellSize = cellSize
 
+        #creation of grid. rowNumber and columnNumber are inputs from main() statement
         self.grid = []
         for row in range(rowNumber):
             line = []
@@ -82,6 +83,19 @@ class CellGrid(Canvas):
             cell.draw()
             self.switched.append(cell)
 
+#Clear ability to empty a cell of any color data
+class Clear():
+    def change(self):
+        global cellGrid
+        cellGrid.destroy()
+        cellGrid = CellGrid(app, 50, 50, 15)
+        cellGrid.pack()
+
+    def button():
+        clear = Button(buttonFrame, text = "Full Clear", width = 10)
+        clear.bind("<Button-1>", Clear.change)
+        clear.pack(side = LEFT)    
+
 #Each color has a class so that they can be more easily adjusted
 class White():
     def change(self):
@@ -91,9 +105,9 @@ class White():
         FILLED_COLOR_BORDER = "white"
 
     def button():
-        white = Button(app, text = "White")
+        white = Button(buttonFrame, text = "White", width = 7)
         white.bind("<Button-1>", White.change)
-        white.pack()
+        white.pack(side = LEFT)
 
 class Black():
     def change(self):
@@ -103,9 +117,9 @@ class Black():
         FILLED_COLOR_BORDER = "black"
 
     def button():
-        black = Button(app, text = "Black")
+        black = Button(buttonFrame, text = "Black", width = 7)
         black.bind("<Button-1>", Black.change)
-        black.pack()
+        black.pack(side = LEFT)
 
 class Purple():
     def change(self):
@@ -115,9 +129,9 @@ class Purple():
         FILLED_COLOR_BORDER = "purple"
 
     def button():
-        purple = Button(app, text = "Purple")
+        purple = Button(buttonFrame, text = "Purple", width = 7)
         purple.bind("<Button-1>", Purple.change)
-        purple.pack()
+        purple.pack(side = LEFT)
 
 class Orange():
     def change(self):
@@ -127,9 +141,9 @@ class Orange():
         FILLED_COLOR_BORDER = "orange"
 
     def button():
-        orange = Button(app, text = "Orange")
+        orange = Button(buttonFrame, text = "Orange", width = 7)
         orange.bind("<Button-1>", Orange.change)
-        orange.pack()
+        orange.pack(side = LEFT)
 
 class Green():
     def change(self):
@@ -139,9 +153,9 @@ class Green():
         FILLED_COLOR_BORDER = "green"
 
     def button():
-        green = Button(app, text = "Green")
+        green = Button(buttonFrame, text = "Green", width = 7)
         green.bind("<Button-1>", Green.change)
-        green.pack()
+        green.pack(side = LEFT)
 
 class Blue():
     def change(self):
@@ -151,9 +165,9 @@ class Blue():
         FILLED_COLOR_BORDER = "blue"
 
     def button():
-        blue = Button(app, text = "Blue")
+        blue = Button(buttonFrame, text = "Blue", width = 7)
         blue.bind("<Button-1>", Blue.change)
-        blue.pack()
+        blue.pack(side = LEFT)
 
 class Yellow():
     def change(self):
@@ -163,9 +177,9 @@ class Yellow():
         FILLED_COLOR_BORDER = "yellow"
 
     def button():
-        yellow = Button(app, text = "Yellow")
+        yellow = Button(buttonFrame, text = "Yellow", width = 7)
         yellow.bind("<Button-1>", Yellow.change)
-        yellow.pack()
+        yellow.pack(side = LEFT)
 
 class Red():
     def change(self):
@@ -175,33 +189,33 @@ class Red():
         FILLED_COLOR_BORDER = "red"
 
     def button():
-        red = Button(app, text = "Red")
+        red = Button(buttonFrame, text = "Red", width = 7)
         red.bind("<Button-1>", Red.change)
-        red.pack()
-
+        red.pack(side = LEFT)
 
 
 if __name__ == "__main__" :
     app = Tk()
 
     #defines global variables to be able to change colors
-    global FILLED_COLOR_BG
-    global FILLED_COLOR_BORDER
     FILLED_COLOR_BG = "Black"
     FILLED_COLOR_BORDER = "Black"
     EMPTY_COLOR_BG = "White"
     EMPTY_COLOR_BORDER = "Black"
 
     #creates buttons used to change colors
-    #create an additional frame for buttons (then have them fill LEFT
-    White.button()
+    buttonFrame = Frame(app)
+    buttonFrame.pack(side = TOP)
+        
     Black.button()
-    Purple.button()
+    White.button()
+    Red.button()
     Orange.button()
+    Yellow.button()
     Green.button()
     Blue.button()
-    Yellow.button()
-    Red.button()
+    Purple.button()
+    Clear.button()
     
     #creates canvas to draw on
     cellGrid = CellGrid(app, 50, 50, 15)
