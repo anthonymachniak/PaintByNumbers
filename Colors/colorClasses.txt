@@ -1,9 +1,7 @@
 class White():
     def change(self):
-        global FILLED_COLOR_BG
-        global FILLED_COLOR_BORDER
-        FILLED_COLOR_BG = "white"
-        FILLED_COLOR_BORDER = "white"
+        global currentColor
+        currentColor ="White"
 
     def button():
         white = Button(buttonFrame, text = "White", width = 7)
@@ -12,10 +10,8 @@ class White():
 
 class Black():
     def change(self):
-        global FILLED_COLOR_BG
-        global FILLED_COLOR_BORDER
-        FILLED_COLOR_BG = "black"
-        FILLED_COLOR_BORDER = "black"
+        global currentColor
+        currentColor ="Black"
 
     def button():
         black = Button(buttonFrame, text = "Black", width = 7)
@@ -24,10 +20,8 @@ class Black():
 
 class Purple():
     def change(self):
-        global FILLED_COLOR_BG
-        global FILLED_COLOR_BORDER
-        FILLED_COLOR_BG = "purple"
-        FILLED_COLOR_BORDER = "purple"
+        global currentColor
+        currentColor ="Purple"
 
     def button():
         purple = Button(buttonFrame, text = "Purple", width = 7)
@@ -36,10 +30,8 @@ class Purple():
 
 class Orange():
     def change(self):
-        global FILLED_COLOR_BG
-        global FILLED_COLOR_BORDER
-        FILLED_COLOR_BG = "orange"
-        FILLED_COLOR_BORDER = "orange"
+        global currentColor
+        currentColor ="Orange"
 
     def button():
         orange = Button(buttonFrame, text = "Orange", width = 7)
@@ -48,10 +40,8 @@ class Orange():
 
 class Green():
     def change(self):
-        global FILLED_COLOR_BG
-        global FILLED_COLOR_BORDER
-        FILLED_COLOR_BG = "green"
-        FILLED_COLOR_BORDER = "green"
+        global currentColor
+        currentColor ="Green"
 
     def button():
         green = Button(buttonFrame, text = "Green", width = 7)
@@ -60,10 +50,8 @@ class Green():
 
 class Blue():
     def change(self):
-        global FILLED_COLOR_BG
-        global FILLED_COLOR_BORDER
-        FILLED_COLOR_BG = "blue"
-        FILLED_COLOR_BORDER = "blue"
+        global currentColor
+        currentColor ="Blue"
 
     def button():
         blue = Button(buttonFrame, text = "Blue", width = 7)
@@ -72,10 +60,8 @@ class Blue():
 
 class Yellow():
     def change(self):
-        global FILLED_COLOR_BG
-        global FILLED_COLOR_BORDER
-        FILLED_COLOR_BG = "yellow"
-        FILLED_COLOR_BORDER = "yellow"
+        global currentColor
+        currentColor ="Yellow"
 
     def button():
         yellow = Button(buttonFrame, text = "Yellow", width = 7)
@@ -84,10 +70,8 @@ class Yellow():
 
 class Red():
     def change(self):
-        global FILLED_COLOR_BG
-        global FILLED_COLOR_BORDER
-        FILLED_COLOR_BG = "red"
-        FILLED_COLOR_BORDER = "red"
+        global currentColor
+        currentColor ="Red"
 
     def button():
         red = Button(buttonFrame, text = "Red", width = 7)

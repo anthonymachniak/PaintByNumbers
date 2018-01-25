@@ -5,10 +5,8 @@ def main():
     for color in colorList:
         colorClasses.write("class " + color + "():\n")
         colorClasses.write("    def change(self):\n")
-        colorClasses.write("        global FILLED_COLOR_BG\n")
-        colorClasses.write("        global FILLED_COLOR_BORDER\n")
-        colorClasses.write("        FILLED_COLOR_BG = \"" + color.lower() + "\"\n")
-        colorClasses.write("        FILLED_COLOR_BORDER = \"" + color.lower() + "\"\n")
+        colorClasses.write("        global currentColor\n")
+        colorClasses.write('        currentColor ="' + color + '"\n')
         colorClasses.write("\n")
         colorClasses.write("    def button():\n")
         colorClasses.write("        " + color.lower() + " = Button(buttonFrame, text = \"" + color + "\", width = 7)\n")
@@ -16,8 +14,6 @@ def main():
         colorClasses.write("        " + color.lower() + ".pack(side = LEFT)")
         colorClasses.write("\n\n")
     
-    
     colorClasses.close()
-    
 
 main()
