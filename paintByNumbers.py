@@ -14,18 +14,23 @@ class Cell():
     def draw(self, color):
         self.color = color
         """ order to the cell to draw its representation on the canvas """
-        if self.color == "Clear":
-            FILLED_COLOR_BG = "White"
-            FILLED_COLOR_BORDER = "Black"
-        else:
-            FILLED_COLOR_BG = self.color
-            FILLED_COLOR_BORDER = self.color
+
         xmin = self.abs * self.size
         xmax = xmin + self.size
         ymin = self.ord * self.size
         ymax = ymin + self.size
-
-        self.master.create_rectangle(xmin, ymin, xmax, ymax, fill = FILLED_COLOR_BG, outline = FILLED_COLOR_BORDER)
+        
+        if self.color == "Clear":
+            cellBG = "White"
+            cellBorder = "Black"
+            colorNumber = "1" #1 is sample number. Need to figure out how to change based on position. Probably within CellGrid app (will define which cell gets which number with an array/list)
+            
+            self.master.create_rectangle(xmin, ymin, xmax, ymax, fill = cellBG, outline = cellBorder)
+            self.master.create_text((xmin+5, ymin+1), anchor = NW, text = colorNumber)
+        else:
+            cellBG = self.color
+            cellBorder = self.color
+            self.master.create_rectangle(xmin, ymin, xmax, ymax, fill = cellBG, outline = cellBorder)
 
 
 class CellGrid(Canvas):
