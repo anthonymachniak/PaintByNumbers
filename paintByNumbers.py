@@ -1,32 +1,31 @@
 from tkinter import *
+from numberList import numberList
 
 #currentColor identifies the state for the color being drawn on cells. Default is 'black'.
 currentColor = "Black"
 
 class Cell():
-    def __init__(self, master, x, y, size, color):
-        """ Constructor of the object called by Cell(...) """
+    def __init__(self, master, x, y, size, color, colorNumber):
         self.master = master
-        self.abs = x
-        self.ord = y
+        self.x = x
+        self.y = y
         self.size= size
+        self.colorNumber = colorNumber
         
     def draw(self, color):
         self.color = color
-        """ order to the cell to draw its representation on the canvas """
 
-        xmin = self.abs * self.size
+        xmin = self.x * self.size
         xmax = xmin + self.size
-        ymin = self.ord * self.size
+        ymin = self.y * self.size
         ymax = ymin + self.size
-        
+
         if self.color == "Clear":
             cellBG = "White"
             cellBorder = "Black"
-            colorNumber = "1" #1 is sample number. Need to figure out how to change based on position. Probably within CellGrid app (will define which cell gets which number with an array/list)
             
             self.master.create_rectangle(xmin, ymin, xmax, ymax, fill = cellBG, outline = cellBorder)
-            self.master.create_text((xmin+5, ymin+1), anchor = NW, text = colorNumber)
+            self.master.create_text((xmin+5, ymin+1), anchor = NW, text = self.colorNumber)
         else:
             cellBG = self.color
             cellBorder = self.color
@@ -38,24 +37,26 @@ class CellGrid(Canvas):
         Canvas.__init__(self, master, width = cellSize * columnNumber , height = cellSize * rowNumber, *args, **kwargs)
 
         self.cellSize = cellSize
+        defaultColor = "Clear"
 
-        #creation of grid. rowNumber and columnNumber are inputs from main() statement
+        #create grid and initialize objects
         self.grid = []
+        listCount = 0
         for row in range(rowNumber):
             line = []
             for column in range(columnNumber):
-                line.append(Cell(self, column, row, cellSize, "Clear"))
+                line.append(Cell(self, column, row, cellSize, defaultColor, numberList[listCount]))
+                listCount += 1
             self.grid.append(line)
-        self.draw()
+        
+        #draw cells
+        for row in self.grid:
+            for cell in row:
+                cell.draw(defaultColor)
 
         #button binding
         self.bind("<Button-1>", self.handleMouseClick)  
         self.bind("<B1-Motion>", self.handleMouseClick)
-        
-    def draw(self):
-        for row in self.grid:
-            for cell in row:
-                cell.draw("Clear")
 
     def _eventCoords(self, event):
         row = int(event.y / self.cellSize)
@@ -73,7 +74,7 @@ class FullClear():
     def change(self):
         global cellGrid
         cellGrid.destroy()
-        cellGrid = CellGrid(app, 50, 50, 15)
+        cellGrid = CellGrid(app, 20, 20, 15)
         cellGrid.pack()
 
     def button():
@@ -93,65 +94,25 @@ class Eraser():
         eraser.pack(side = LEFT)
 
 #Each color has a class so that colors can be added or removed more easily
-class White():
+class Red():
     def change(self):
         global currentColor
-        currentColor ="White"
+        currentColor ="Red"
 
     def button():
-        white = Button(buttonFrame, text = "White", width = 7)
-        white.bind("<Button-1>", White.change)
-        white.pack(side = LEFT)
+        red = Button(buttonFrame, text = "Red - 2", width = 7)
+        red.bind("<Button-1>", Red.change)
+        red.pack(side = LEFT)
 
-class Black():
+class DodgerBlue():
     def change(self):
         global currentColor
-        currentColor ="Black"
+        currentColor ="DodgerBlue"
 
     def button():
-        black = Button(buttonFrame, text = "Black", width = 7)
-        black.bind("<Button-1>", Black.change)
-        black.pack(side = LEFT)
-
-class Purple():
-    def change(self):
-        global currentColor
-        currentColor ="Purple"
-
-    def button():
-        purple = Button(buttonFrame, text = "Purple", width = 7)
-        purple.bind("<Button-1>", Purple.change)
-        purple.pack(side = LEFT)
-
-class Orange():
-    def change(self):
-        global currentColor
-        currentColor ="Orange"
-
-    def button():
-        orange = Button(buttonFrame, text = "Orange", width = 7)
-        orange.bind("<Button-1>", Orange.change)
-        orange.pack(side = LEFT)
-
-class Green():
-    def change(self):
-        global currentColor
-        currentColor ="Green"
-
-    def button():
-        green = Button(buttonFrame, text = "Green", width = 7)
-        green.bind("<Button-1>", Green.change)
-        green.pack(side = LEFT)
-
-class Blue():
-    def change(self):
-        global currentColor
-        currentColor ="Blue"
-
-    def button():
-        blue = Button(buttonFrame, text = "Blue", width = 7)
-        blue.bind("<Button-1>", Blue.change)
-        blue.pack(side = LEFT)
+        dodgerblue = Button(buttonFrame, text = "Dodger Blue - 3", width = 15)
+        dodgerblue.bind("<Button-1>", DodgerBlue.change)
+        dodgerblue.pack(side = LEFT)
 
 class Yellow():
     def change(self):
@@ -159,19 +120,49 @@ class Yellow():
         currentColor ="Yellow"
 
     def button():
-        yellow = Button(buttonFrame, text = "Yellow", width = 7)
+        yellow = Button(buttonFrame, text = "Yellow - 4", width = 10)
         yellow.bind("<Button-1>", Yellow.change)
         yellow.pack(side = LEFT)
 
-class Red():
+class Black():
     def change(self):
         global currentColor
-        currentColor ="Red"
+        currentColor ="Black"
 
     def button():
-        red = Button(buttonFrame, text = "Red", width = 7)
-        red.bind("<Button-1>", Red.change)
-        red.pack(side = LEFT)
+        black = Button(buttonFrame, text = "Black - 1", width = 9)
+        black.bind("<Button-1>", Black.change)
+        black.pack(side = LEFT)
+
+class Tan1():
+    def change(self):
+        global currentColor
+        currentColor ="Tan1"
+
+    def button():
+        tan1 = Button(buttonFrame, text = "Tan - 5", width = 7)
+        tan1.bind("<Button-1>", Tan1.change)
+        tan1.pack(side = LEFT)
+
+class Brown():
+    def change(self):
+        global currentColor
+        currentColor ="Brown"
+
+    def button():
+        brown = Button(buttonFrame, text = "Brown - 6", width = 9)
+        brown.bind("<Button-1>", Brown.change)
+        brown.pack(side = LEFT)
+
+class Sienna4():
+    def change(self):
+        global currentColor
+        currentColor ="Sienna4"
+
+    def button():
+        sienna4 = Button(buttonFrame, text = "Sienna - 7", width = 10)
+        sienna4.bind("<Button-1>", Sienna4.change)
+        sienna4.pack(side = LEFT)
 
 
 if __name__ == "__main__" :
@@ -184,19 +175,18 @@ if __name__ == "__main__" :
     fullClearButtonFrame.pack(side = BOTTOM)
 
     Black.button()
-    White.button()
     Red.button()
-    Orange.button()
+    DodgerBlue.button()
     Yellow.button()
-    Green.button()
-    Blue.button()
-    Purple.button()
+    Tan1.button()
+    Brown.button()
+    Sienna4.button()
     Eraser.button()
     FullClear.button()
     
     #creates canvas to draw on
     #if CellGrid input changes, make sure to change FullClear class
-    cellGrid = CellGrid(app, 50, 50, 15)
+    cellGrid = CellGrid(app, 20, 20, 15)
     cellGrid.pack()
     
     app.mainloop()
